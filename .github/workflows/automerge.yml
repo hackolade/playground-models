@@ -1,4 +1,4 @@
-name: Enable Automergeeee
+name: Enable Automerge
 on:
   pull_request_target:
     branches:
