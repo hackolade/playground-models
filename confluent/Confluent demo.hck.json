@@ -1,0 +1,640 @@
+{
+  "modelName": "New model",
+  "collections": [
+    {
+      "GUID": "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
+      "collectionName": "order",
+      "type": "object",
+      "properties": [
+        {
+          "name": "orderID",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "required": true,
+          "primaryKey": false,
+          "type": "string",
+          "GUID": "f0a8dffb-4801-48e6-b38a-09429dcb411d",
+          "logicalType": "uuid",
+          "error": {
+            "name": false
+          }
+        },
+        {
+          "name": "orderDate",
+          "type": "multiple",
+          "properties": [],
+          "multipleTypes": [
+            {
+              "isActivated": true,
+              "type": "null",
+              "GUID": "6063feaf-14eb-48a2-907a-454e2b4f5a76"
+            },
+            {
+              "exclusiveMinimum": false,
+              "exclusiveMaximum": false,
+              "mode": "int",
+              "childType": "number",
+              "type": "numeric",
+              "GUID": "683b2978-81ef-4f08-9f0a-2c85f3734f5a",
+              "logicalType": "date",
+              "error": {
+                "default": true
+              }
+            }
+          ],
+          "isActivated": true,
+          "primaryKey": false,
+          "GUID": "a32d7f72-588e-43dc-a034-8a85a6b0cbd2",
+          "hackoladeMeta": {},
+          "required": false,
+          "default": null,
+          "error": {}
+        },
+        {
+          "GUID": "85d9c4ff-450e-4651-aef5-21aff5241139",
+          "name": "customer",
+          "type": "reference",
+          "$ref": "#/definitions/customer",
+          "refType": "collectionReference",
+          "ref": "6a474d94-c083-4c1a-811e-be8fa14a9f61",
+          "refIdPath": [
+            "6a474d94-c083-4c1a-811e-be8fa14a9f61"
+          ],
+          "isActivated": true,
+          "error": {
+            "name": false,
+            "code": false
+          }
+        },
+        {
+          "name": "orderLines",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "required": true,
+          "properties": [
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "required": true,
+              "subtype": "map",
+              "primaryKey": false,
+              "properties": [
+                {
+                  "name": "lineNum",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "required": true,
+                  "exclusiveMinimum": false,
+                  "exclusiveMaximum": false,
+                  "primaryKey": false,
+                  "mode": "int",
+                  "childType": "number",
+                  "type": "numeric",
+                  "GUID": "283c0014-b32c-44ee-bb8e-9f58da1827f1",
+                  "error": {}
+                },
+                {
+                  "GUID": "c4b72ef8-a56f-4aa2-baf4-3d54b74694ce",
+                  "name": "product",
+                  "type": "reference",
+                  "$ref": "#/definitions/product",
+                  "refType": "collectionReference",
+                  "ref": "48e20d0f-104d-4ab3-a224-95150064e7dc",
+                  "refIdPath": [
+                    "48e20d0f-104d-4ab3-a224-95150064e7dc"
+                  ],
+                  "isActivated": true,
+                  "error": {
+                    "name": false,
+                    "code": false
+                  }
+                },
+                {
+                  "name": "quantity",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "required": true,
+                  "exclusiveMinimum": false,
+                  "exclusiveMaximum": false,
+                  "primaryKey": false,
+                  "mode": "int",
+                  "childType": "number",
+                  "type": "numeric",
+                  "GUID": "81f414a6-6ba3-431d-a926-f8e233d08297",
+                  "error": {}
+                },
+                {
+                  "name": "unitPrice",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "required": true,
+                  "exclusiveMinimum": false,
+                  "exclusiveMaximum": false,
+                  "primaryKey": false,
+                  "mode": "long",
+                  "childType": "number",
+                  "type": "numeric",
+                  "GUID": "1d650548-d6bc-44b9-a9cf-b670e776c362",
+                  "error": {}
+                }
+              ],
+              "additionalProperties": false,
+              "childType": "map",
+              "type": "document",
+              "GUID": "ba79efd0-9cf0-4d04-bd35-6cea11e542f0",
+              "arrayItem": true,
+              "error": {}
+            }
+          ],
+          "primaryKey": false,
+          "additionalItems": true,
+          "uniqueItems": false,
+          "childType": "array",
+          "type": "array",
+          "error": {},
+          "GUID": "6830e97f-dca8-4600-a3e9-c525c2693c35",
+          "metaProps": []
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "a37cab3f-6d3a-4f8b-8304-aa7872557fcd"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "collectionUsers": [],
+      "bucketId": "5170915a-415c-433e-abe8-388433feb49c",
+      "hackoladeMeta": {},
+      "schemaNameStrategy": "TopicRecordNameStrategy",
+      "confluentSubjectName": "orders",
+      "confluentCompatibility": "BACKWARD",
+      "schemaTopic": "onlineShop"
+    },
+    {
+      "GUID": "6a474d94-c083-4c1a-811e-be8fa14a9f61",
+      "collectionName": "customer",
+      "type": "object",
+      "properties": [
+        {
+          "name": "customerID",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "required": true,
+          "primaryKey": false,
+          "type": "string",
+          "GUID": "bb3df3b1-f9fa-4aab-8b1a-f7ed43bf5e4e",
+          "logicalType": "uuid",
+          "error": {
+            "name": false
+          },
+          "childRelationships": [
+            "2afed7cb-ee71-49cb-942e-e4413eca8b4e"
+          ]
+        },
+        {
+          "name": "firstName",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "required": true,
+          "primaryKey": false,
+          "type": "string",
+          "GUID": "85656d1d-be08-435a-8d4c-77b421d52e29",
+          "error": {
+            "name": false
+          }
+        },
+        {
+          "name": "lastName",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "required": true,
+          "primaryKey": false,
+          "type": "string",
+          "GUID": "590a9df6-ede1-4da4-8cbb-521f21062cc5",
+          "error": {
+            "name": false
+          }
+        },
+        {
+          "name": "address",
+          "type": "multiple",
+          "properties": [],
+          "multipleTypes": [
+            {
+              "isActivated": true,
+              "type": "null",
+              "GUID": "30ea3af1-c719-4370-9708-6ee56c597662"
+            },
+            {
+              "type": "string",
+              "GUID": "f1cf0410-d109-4798-af45-e682533b7906",
+              "error": {}
+            }
+          ],
+          "isActivated": true,
+          "primaryKey": false,
+          "GUID": "30fba81b-ce05-43c2-9bf6-e60b5b656357",
+          "hackoladeMeta": {},
+          "required": false,
+          "default": null,
+          "error": {},
+          "sources": [
+            {
+              "GUID": "2275f6ad-094f-4416-a6be-171e42cec582",
+              "lineageSourceGUID": "82cbb964-4005-4ddc-8aa6-4cd748f467a2"
+            },
+            {
+              "GUID": "80a23c31-8874-4428-b033-14e701909a82",
+              "lineageSourceGUID": "d5efd02c-7a53-498d-b751-b311a55fba28"
+            }
+          ]
+        },
+        {
+          "name": "creationDate",
+          "type": "multiple",
+          "properties": [],
+          "multipleTypes": [
+            {
+              "isActivated": true,
+              "type": "null",
+              "GUID": "d536317b-e690-4220-b604-204d4ae81a16"
+            },
+            {
+              "exclusiveMinimum": false,
+              "exclusiveMaximum": false,
+              "mode": "long",
+              "childType": "number",
+              "type": "numeric",
+              "GUID": "2058670b-4dad-44ba-b0f5-98debee249e4",
+              "logicalType": "local-timestamp-millis",
+              "error": {}
+            }
+          ],
+          "isActivated": true,
+          "primaryKey": false,
+          "GUID": "5a61cfb6-5df5-43d2-93c2-6f1cbe082cea",
+          "hackoladeMeta": {},
+          "required": false,
+          "default": null,
+          "error": {
+            "name": false
+          }
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "b71cb767-2a06-472f-af97-3f2773b721d2"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "collectionUsers": [],
+      "bucketId": "5170915a-415c-433e-abe8-388433feb49c",
+      "hackoladeMeta": {},
+      "schemaNameStrategy": "TopicRecordNameStrategy",
+      "schemaTopic": "onlineShop",
+      "confluentSubjectName": "customers",
+      "confluentCompatibility": "BACKWARD",
+      "tags": [
+        "PII",
+        "Sensitive"
+      ]
+    },
+    {
+      "GUID": "48e20d0f-104d-4ab3-a224-95150064e7dc",
+      "collectionName": "product",
+      "type": "object",
+      "properties": [
+        {
+          "name": "productID",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "required": true,
+          "primaryKey": false,
+          "type": "string",
+          "GUID": "96056a84-348e-41c7-af7b-13849ed6ebb5",
+          "logicalType": "uuid",
+          "error": {},
+          "childRelationships": [
+            "9143bfdc-ef60-4e72-a611-b8be3802fdf0"
+          ]
+        },
+        {
+          "name": "partNumber",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "required": true,
+          "primaryKey": false,
+          "type": "string",
+          "GUID": "64c495cf-2db2-4b90-a6c0-0d3ff9683b9b",
+          "error": {
+            "name": false
+          }
+        },
+        {
+          "name": "description",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "required": true,
+          "primaryKey": false,
+          "type": "string",
+          "GUID": "68c43be1-b675-49eb-84d7-3e4f4cde3a9e",
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "50ed96de-362e-431d-a50f-c8a20934addc"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "collectionUsers": [],
+      "bucketId": "5170915a-415c-433e-abe8-388433feb49c",
+      "hackoladeMeta": {},
+      "schemaNameStrategy": "TopicRecordNameStrategy",
+      "schemaTopic": "onlineShop",
+      "confluentSubjectName": "products",
+      "confluentCompatibility": "BACKWARD"
+    }
+  ],
+  "buckets": [
+    {
+      "name": "HCKdemo",
+      "type": "bucket",
+      "collectionIds": [
+        "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
+        "6a474d94-c083-4c1a-811e-be8fa14a9f61",
+        "48e20d0f-104d-4ab3-a224-95150064e7dc"
+      ],
+      "backgroundColor": {
+        "r": 216,
+        "g": 0,
+        "b": 115,
+        "a": 1
+      },
+      "show": true,
+      "isActivated": true,
+      "indexes": [],
+      "GUID": "5170915a-415c-433e-abe8-388433feb49c"
+    }
+  ],
+  "views": [],
+  "relationships": [
+    {
+      "name": "fk_customer_customerID_to_order_customer",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "6a474d94-c083-4c1a-811e-be8fa14a9f61",
+          "bb3df3b1-f9fa-4aab-8b1a-f7ed43bf5e4e"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
+          "85d9c4ff-450e-4651-aef5-21aff5241139",
+          "6a474d94-c083-4c1a-811e-be8fa14a9f61",
+          "bb3df3b1-f9fa-4aab-8b1a-f7ed43bf5e4e"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "0..n",
+      "parentCollection": "6a474d94-c083-4c1a-811e-be8fa14a9f61",
+      "childCollection": "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
+      "GUID": "2afed7cb-ee71-49cb-942e-e4413eca8b4e",
+      "hackoladeStyles": {
+        "GUID": "039e7e61-d074-4279-baaa-647df2f39e36",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1394,
+            "y": 1193
+          },
+          {
+            "x": 1464,
+            "y": 1193
+          },
+          {
+            "x": 1464,
+            "y": 1170.5
+          },
+          {
+            "x": 1534,
+            "y": 1170.5
+          }
+        ],
+        "sides": [
+          "right",
+          "left"
+        ]
+      }
+    },
+    {
+      "name": "fk_product_productID_to_order_orderLines.product",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "48e20d0f-104d-4ab3-a224-95150064e7dc",
+          "96056a84-348e-41c7-af7b-13849ed6ebb5"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
+          "6830e97f-dca8-4600-a3e9-c525c2693c35",
+          "ba79efd0-9cf0-4d04-bd35-6cea11e542f0",
+          "c4b72ef8-a56f-4aa2-baf4-3d54b74694ce",
+          "48e20d0f-104d-4ab3-a224-95150064e7dc",
+          "96056a84-348e-41c7-af7b-13849ed6ebb5"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "0..n",
+      "parentCollection": "48e20d0f-104d-4ab3-a224-95150064e7dc",
+      "childCollection": "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
+      "GUID": "9143bfdc-ef60-4e72-a611-b8be3802fdf0",
+      "hackoladeMeta": {},
+      "hackoladeStyles": {
+        "GUID": "f2d8fc30-daac-4acc-88fb-c4c8f5f3b246",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1394,
+            "y": 1306
+          },
+          {
+            "x": 1469,
+            "y": 1306
+          },
+          {
+            "x": 1469,
+            "y": 1318.5
+          },
+          {
+            "x": 1544,
+            "y": 1318.5
+          }
+        ],
+        "sides": [
+          "right",
+          "left"
+        ]
+      }
+    }
+  ],
+  "users": [],
+  "diagramViews": [],
+  "idToNameHashTable": {
+    "5170915a-415c-433e-abe8-388433feb49c": "HCKdemo",
+    "e2eb848c-cda5-47aa-8d53-e210eef7afbe": "order",
+    "f0a8dffb-4801-48e6-b38a-09429dcb411d": "orderID",
+    "a32d7f72-588e-43dc-a034-8a85a6b0cbd2": "orderDate",
+    "6830e97f-dca8-4600-a3e9-c525c2693c35": "orderLines",
+    "6a474d94-c083-4c1a-811e-be8fa14a9f61": "customer",
+    "bb3df3b1-f9fa-4aab-8b1a-f7ed43bf5e4e": "customerID",
+    "85656d1d-be08-435a-8d4c-77b421d52e29": "firstName",
+    "590a9df6-ede1-4da4-8cbb-521f21062cc5": "lastName",
+    "30fba81b-ce05-43c2-9bf6-e60b5b656357": "address",
+    "5a61cfb6-5df5-43d2-93c2-6f1cbe082cea": "creationDate",
+    "283c0014-b32c-44ee-bb8e-9f58da1827f1": "lineNum",
+    "81f414a6-6ba3-431d-a926-f8e233d08297": "quantity",
+    "1d650548-d6bc-44b9-a9cf-b670e776c362": "unitPrice",
+    "48e20d0f-104d-4ab3-a224-95150064e7dc": "product",
+    "96056a84-348e-41c7-af7b-13849ed6ebb5": "productID",
+    "64c495cf-2db2-4b90-a6c0-0d3ff9683b9b": "partNumber",
+    "68c43be1-b675-49eb-84d7-3e4f4cde3a9e": "description",
+    "c4b72ef8-a56f-4aa2-baf4-3d54b74694ce": "product",
+    "85d9c4ff-450e-4651-aef5-21aff5241139": "customer",
+    "2afed7cb-ee71-49cb-942e-e4413eca8b4e": "fk_customer_customerID_to_order_customer",
+    "9143bfdc-ef60-4e72-a611-b8be3802fdf0": "fk_product_productID_to_order_orderLines.product"
+  },
+  "definitions": {
+    "type": "definitions",
+    "properties": [],
+    "GUID": "5f8b7759-fd55-49ab-b8ee-dd63a2831d27"
+  },
+  "polyglotDefinitions": {
+    "type": "polyglotDefinitions",
+    "properties": [],
+    "GUID": "c1a781cf-9f6f-4abf-8bcc-d21c1c46667c"
+  },
+  "externalDefinitions": {
+    "type": "externalDefinitions",
+    "properties": [],
+    "GUID": "6cfe1c2f-5225-4c54-9eb0-5c670a331644"
+  },
+  "sources": [],
+  "decorativeSymbols": [],
+  "dbVendor": "Avro",
+  "schemaNameStrategy": "TopicNameStrategy",
+  "appTarget": "Avro",
+  "creationTS": "2025-02-24T17:48:57.767Z",
+  "GUID": "f5be81af-4748-4d0a-9512-e4ec7f56b6cc",
+  "isLineageEnabled": false,
+  "schemaRegistryType": "Confluent Schema Registry",
+  "hackoladeMeta": {
+    "validationErrors": {
+      "schemaRegistryType": false
+    }
+  },
+  "lastModifTS": "2025-02-24T18:18:57.731Z",
+  "persistenceSchemaVersion": "8",
+  "isCreatedByPlugin": true,
+  "pluginInformation": {
+    "pluginName": "Avro",
+    "pluginVersion": "0.2.9",
+    "pluginEngineVersion": "1.0.0"
+  },
+  "applicationInformation": {
+    "version": "8.0.2"
+  },
+  "settings": {
+    "centralPane": {
+      "dbLevel": {
+        "erd": [
+          {
+            "GUID": "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
+            "x": 1080,
+            "y": 1080,
+            "width": 314,
+            "height": 339,
+            "color": {}
+          },
+          {
+            "GUID": "6a474d94-c083-4c1a-811e-be8fa14a9f61",
+            "x": 1534,
+            "y": 1109,
+            "width": 228,
+            "height": 123,
+            "color": {}
+          },
+          {
+            "GUID": "48e20d0f-104d-4ab3-a224-95150064e7dc",
+            "x": 1544,
+            "y": 1275,
+            "width": 222,
+            "height": 87,
+            "color": {}
+          }
+        ],
+        "erdDefinitions": {
+          "erd": [],
+          "rootPath": [],
+          "entities": [],
+          "decorativeSymbols": []
+        },
+        "buckets": [
+          {
+            "x": 1040,
+            "y": 1040,
+            "GUID": "5170915a-415c-433e-abe8-388433feb49c"
+          }
+        ],
+        "collapsedNodes": [],
+        "activeRelationship": "",
+        "activeRelationshipFields": {
+          "childField": [],
+          "parentField": []
+        },
+        "selectedCollections": [],
+        "displayColorPicker": false,
+        "graphView": {
+          "erd": [],
+          "buckets": [],
+          "decorativeSymbols": [],
+          "forceLayout": true,
+          "defaultLinkLength": 300
+        },
+        "diagramViews": [],
+        "decorativeSymbols": [],
+        "nestedCollectionsLayout": "horizontal",
+        "options": [
+          {
+            "autoWidth": true,
+            "autoHeight": true,
+            "GUID": "6a474d94-c083-4c1a-811e-be8fa14a9f61"
+          }
+        ],
+        "relationshipUpdateDisabled": false
+      },
+      "collectionLevel": {},
+      "changed": false
+    },
+    "dtDiagram": {
+      "collapsedNodes": [],
+      "shouldDistributeCollections": false
+    }
+  }
+}
