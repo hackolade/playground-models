@@ -7,16 +7,24 @@
       "type": "object",
       "properties": [
         {
+          "GUID": "f0a8dffb-4801-48e6-b38a-09429dcb411d",
           "name": "orderID",
-          "hackoladeMeta": {},
+          "type": "reference",
+          "$ref": "#model/definitions/identifier",
+          "refType": "model",
+          "ref": "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c",
+          "refIdPath": [
+            "f5be81af-4748-4d0a-9512-e4ec7f56b6cc",
+            "5f8b7759-fd55-49ab-b8ee-dd63a2831d27",
+            "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c"
+          ],
           "isActivated": true,
           "required": true,
           "primaryKey": false,
-          "type": "string",
-          "GUID": "f0a8dffb-4801-48e6-b38a-09429dcb411d",
-          "logicalType": "uuid",
+          "hackoladeMeta": {},
+          "refDescription": "This is a unique identifier for each order. It serves as the primary key for the table, ensuring that each order can be easily referenced or retrieved. ",
           "error": {
-            "name": false
+            "refDescription": false
           }
         },
         {
@@ -39,7 +47,8 @@
               "logicalType": "date",
               "error": {
                 "default": true
-              }
+              },
+              "fakerFunction": "faker.date.recent({ days: 10 })"
             }
           ],
           "isActivated": true,
@@ -48,6 +57,7 @@
           "hackoladeMeta": {},
           "required": false,
           "default": null,
+          "description": "This column stores the date (and sometimes the time) when the order was placed. It’s important for tracking order history, delivery timelines, and for analyzing purchasing patterns (e.g., peak sales periods or customer behavior).",
           "error": {}
         },
         {
@@ -91,6 +101,8 @@
                   "childType": "number",
                   "type": "numeric",
                   "GUID": "283c0014-b32c-44ee-bb8e-9f58da1827f1",
+                  "sample": 1,
+                  "description": "The lineNum is used to distinguish individual items in an order. Since an order can consist of multiple products, lineNum helps to number each product in the order (usually sequentially). This allows for easy organization of the products, especially when there are multiple items ordered. It’s often used in conjunction with orderID to identify specific line items in a given order.",
                   "error": {}
                 },
                 {
@@ -105,9 +117,9 @@
                   ],
                   "isActivated": true,
                   "error": {
-                    "name": false,
-                    "code": false
-                  }
+                    "refDescription": false
+                  },
+                  "refDescription": "This column represents the specific product being ordered. It could store a reference to the productID from the product table, or it could directly store the product name or SKU (Stock Keeping Unit), depending on the system’s design. The product column is used to identify which item is being purchased in each line of the order."
                 },
                 {
                   "name": "quantity",
@@ -121,6 +133,8 @@
                   "childType": "number",
                   "type": "numeric",
                   "GUID": "81f414a6-6ba3-431d-a926-f8e233d08297",
+                  "sample": 12,
+                  "description": "This column indicates the number of units of the product being ordered in a particular line. It is crucial for inventory management, sales reporting, and determining the total value of an order. If a customer orders multiple quantities of the same product, this field would reflect that.",
                   "error": {}
                 },
                 {
@@ -135,6 +149,8 @@
                   "childType": "number",
                   "type": "numeric",
                   "GUID": "1d650548-d6bc-44b9-a9cf-b670e776c362",
+                  "sample": 56.32,
+                  "description": "The unitPrice represents the price per unit of the product at the time the order is placed. This value is important for calculating the total cost of the product line (quantity * unitPrice). The unitPrice might reflect any discounts, promotions, or pricing tiers available to the customer at the time of purchase.",
                   "error": {}
                 }
               ],
@@ -169,7 +185,8 @@
       "schemaNameStrategy": "TopicRecordNameStrategy",
       "confluentSubjectName": "orders",
       "confluentCompatibility": "BACKWARD",
-      "schemaTopic": "onlineShop"
+      "schemaTopic": "onlineShop",
+      "description": "This record contains information about individual orders placed by customers. Each record represents an order, which could consist of one or more line items, each corresponding to a specific product being purchased. It helps track customer purchases, manage inventory, and provide data for invoicing and reporting.\n\n"
     },
     {
       "GUID": "6a474d94-c083-4c1a-811e-be8fa14a9f61",
@@ -177,20 +194,21 @@
       "type": "object",
       "properties": [
         {
+          "GUID": "bb3df3b1-f9fa-4aab-8b1a-f7ed43bf5e4e",
           "name": "customerID",
-          "hackoladeMeta": {},
+          "type": "reference",
+          "$ref": "#model/definitions/identifier",
+          "refType": "model",
+          "ref": "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c",
+          "refIdPath": [
+            "f5be81af-4748-4d0a-9512-e4ec7f56b6cc",
+            "5f8b7759-fd55-49ab-b8ee-dd63a2831d27",
+            "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c"
+          ],
           "isActivated": true,
           "required": true,
           "primaryKey": false,
-          "type": "string",
-          "GUID": "bb3df3b1-f9fa-4aab-8b1a-f7ed43bf5e4e",
-          "logicalType": "uuid",
-          "error": {
-            "name": false
-          },
-          "childRelationships": [
-            "2afed7cb-ee71-49cb-942e-e4413eca8b4e"
-          ]
+          "hackoladeMeta": {}
         },
         {
           "name": "firstName",
@@ -200,9 +218,9 @@
           "primaryKey": false,
           "type": "string",
           "GUID": "85656d1d-be08-435a-8d4c-77b421d52e29",
-          "error": {
-            "name": false
-          }
+          "fakerFunction": "faker.person.firstName()",
+          "description": "This column holds the customer's first name. It is part of the personal information that helps identify the customer. This field can be useful for customer interactions, marketing purposes, or for personalizing communications (e.g., emails, invoices).",
+          "error": {}
         },
         {
           "name": "lastName",
@@ -212,9 +230,9 @@
           "primaryKey": false,
           "type": "string",
           "GUID": "590a9df6-ede1-4da4-8cbb-521f21062cc5",
-          "error": {
-            "name": false
-          }
+          "fakerFunction": "faker.person.lastName()",
+          "description": "This column stores the customer's last name (or surname). Like the first name, the last name is an important piece of the customer's identity. It is typically used in combination with the first name to uniquely identify individuals and personalize communications.",
+          "error": {}
         },
         {
           "name": "address",
@@ -229,7 +247,10 @@
             {
               "type": "string",
               "GUID": "f1cf0410-d109-4798-af45-e682533b7906",
-              "error": {}
+              "error": {
+                "default": true
+              },
+              "fakerFunction": "faker.location.streetAddress()"
             }
           ],
           "isActivated": true,
@@ -238,7 +259,6 @@
           "hackoladeMeta": {},
           "required": false,
           "default": null,
-          "error": {},
           "sources": [
             {
               "GUID": "2275f6ad-094f-4416-a6be-171e42cec582",
@@ -248,7 +268,9 @@
               "GUID": "80a23c31-8874-4428-b033-14e701909a82",
               "lineageSourceGUID": "d5efd02c-7a53-498d-b751-b311a55fba28"
             }
-          ]
+          ],
+          "description": "The address column stores the physical address of the customer, which could include details like street name, city, state, postal code, and country. This is important for shipping products, billing purposes, or maintaining accurate contact records. In some cases, this could be broken down into multiple columns (e.g., street, city, zip code) depending on the database structure.",
+          "error": {}
         },
         {
           "name": "creationDate",
@@ -268,7 +290,10 @@
               "type": "numeric",
               "GUID": "2058670b-4dad-44ba-b0f5-98debee249e4",
               "logicalType": "local-timestamp-millis",
-              "error": {}
+              "error": {
+                "default": true
+              },
+              "fakerFunction": "faker.date.anytime()"
             }
           ],
           "isActivated": true,
@@ -277,9 +302,8 @@
           "hackoladeMeta": {},
           "required": false,
           "default": null,
-          "error": {
-            "name": false
-          }
+          "description": "This column records the date and time when the customer account was created. It is useful for tracking the age of customer accounts, determining customer activity, and analyzing trends (e.g., when customers tend to join or how long they've been active). This field is usually set automatically when a new customer is added to the system.",
+          "error": {}
         }
       ],
       "definitions": {
@@ -299,7 +323,8 @@
       "tags": [
         "PII",
         "Sensitive"
-      ]
+      ],
+      "description": "This record contains essential information about the customers, including personal details and the data related to their account or registration. It helps manage customer profiles, track account creation, and enables businesses to reach out or interact with their customers."
     },
     {
       "GUID": "48e20d0f-104d-4ab3-a224-95150064e7dc",
@@ -307,18 +332,25 @@
       "type": "object",
       "properties": [
         {
+          "GUID": "96056a84-348e-41c7-af7b-13849ed6ebb5",
           "name": "productID",
-          "hackoladeMeta": {},
+          "type": "reference",
+          "$ref": "#model/definitions/identifier",
+          "refType": "model",
+          "ref": "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c",
+          "refIdPath": [
+            "f5be81af-4748-4d0a-9512-e4ec7f56b6cc",
+            "5f8b7759-fd55-49ab-b8ee-dd63a2831d27",
+            "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c"
+          ],
           "isActivated": true,
           "required": true,
           "primaryKey": false,
-          "type": "string",
-          "GUID": "96056a84-348e-41c7-af7b-13849ed6ebb5",
-          "logicalType": "uuid",
-          "error": {},
-          "childRelationships": [
-            "9143bfdc-ef60-4e72-a611-b8be3802fdf0"
-          ]
+          "hackoladeMeta": {},
+          "refDescription": "This is a unique identifier for each product in the table. It is typically a primary key, ensuring that each product is distinct and easily retrievable. It may be an auto-incremented integer or a unique alphanumeric code depending on the system design.",
+          "error": {
+            "refDescription": false
+          }
         },
         {
           "name": "partNumber",
@@ -328,9 +360,9 @@
           "primaryKey": false,
           "type": "string",
           "GUID": "64c495cf-2db2-4b90-a6c0-0d3ff9683b9b",
-          "error": {
-            "name": false
-          }
+          "fakerFunction": "faker.commerce.isbn(10)",
+          "description": "The part number is a unique code or reference used to identify a specific version of a product, often assigned by manufacturers or suppliers. It allows users to distinguish between different products that might have similar descriptions but are technically different (e.g., different colors, sizes, or models). This is commonly used in inventory management systems or parts catalogs.",
+          "error": {}
         },
         {
           "name": "description",
@@ -340,6 +372,8 @@
           "primaryKey": false,
           "type": "string",
           "GUID": "68c43be1-b675-49eb-84d7-3e4f4cde3a9e",
+          "fakerFunction": "faker.commerce.productName()",
+          "description": "This column holds a textual description of the product. It provides more detailed information such as the product's features, specifications, intended use, or any other relevant data that helps users or customers understand what the product is. The description can vary in length, depending on the detail level required by the business or system.",
           "error": {}
         }
       ],
@@ -356,7 +390,8 @@
       "schemaNameStrategy": "TopicRecordNameStrategy",
       "schemaTopic": "onlineShop",
       "confluentSubjectName": "products",
-      "confluentCompatibility": "BACKWARD"
+      "confluentCompatibility": "BACKWARD",
+      "description": "This record contains information about products in the inventory, catalog, or any system that deals with physical or digital items. It contains key attributes to uniquely identify each product, manage product details, and provide descriptions that help in understanding the products."
     }
   ],
   "buckets": [
@@ -377,7 +412,10 @@
       "show": true,
       "isActivated": true,
       "indexes": [],
-      "GUID": "5170915a-415c-433e-abe8-388433feb49c"
+      "GUID": "5170915a-415c-433e-abe8-388433feb49c",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
     }
   ],
   "views": [],
@@ -434,6 +472,9 @@
           "right",
           "left"
         ]
+      },
+      "hackoladeMeta": {
+        "validationErrors": {}
       }
     },
     {
@@ -461,7 +502,9 @@
       "parentCollection": "48e20d0f-104d-4ab3-a224-95150064e7dc",
       "childCollection": "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
       "GUID": "9143bfdc-ef60-4e72-a611-b8be3802fdf0",
-      "hackoladeMeta": {},
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
       "hackoladeStyles": {
         "GUID": "f2d8fc30-daac-4acc-88fb-c4c8f5f3b246",
         "autoPositioning": true,
@@ -518,11 +561,40 @@
     "c4b72ef8-a56f-4aa2-baf4-3d54b74694ce": "product",
     "85d9c4ff-450e-4651-aef5-21aff5241139": "customer",
     "2afed7cb-ee71-49cb-942e-e4413eca8b4e": "fk_customer_customerID_to_order_customer",
-    "9143bfdc-ef60-4e72-a611-b8be3802fdf0": "fk_product_productID_to_order_orderLines.product"
+    "9143bfdc-ef60-4e72-a611-b8be3802fdf0": "fk_product_productID_to_order_orderLines.product",
+    "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c": "identifier"
   },
   "definitions": {
     "type": "definitions",
-    "properties": [],
+    "properties": [
+      {
+        "name": "identifier",
+        "hackoladeMeta": {},
+        "isActivated": true,
+        "required": true,
+        "primaryKey": false,
+        "type": "string",
+        "GUID": "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c",
+        "definitionRefs": [
+          [
+            "6a474d94-c083-4c1a-811e-be8fa14a9f61",
+            "bb3df3b1-f9fa-4aab-8b1a-f7ed43bf5e4e"
+          ],
+          [
+            "48e20d0f-104d-4ab3-a224-95150064e7dc",
+            "96056a84-348e-41c7-af7b-13849ed6ebb5"
+          ],
+          [
+            "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
+            "f0a8dffb-4801-48e6-b38a-09429dcb411d"
+          ]
+        ],
+        "logicalType": "uuid",
+        "fakerFunction": "faker.string.uuid()",
+        "description": "Unique identifier to be used as a primary key.  In UUID format",
+        "error": {}
+      }
+    ],
     "GUID": "5f8b7759-fd55-49ab-b8ee-dd63a2831d27"
   },
   "polyglotDefinitions": {
@@ -546,20 +618,21 @@
   "schemaRegistryType": "Confluent Schema Registry",
   "hackoladeMeta": {
     "validationErrors": {
-      "schemaRegistryType": false
+      "schemaRegistryUrl": false
     }
   },
-  "lastModifTS": "2025-02-24T18:18:57.731Z",
+  "lastModifTS": "2025-02-25T16:05:01.693Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {
     "pluginName": "Avro",
-    "pluginVersion": "0.2.9",
+    "pluginVersion": "0.2.10",
     "pluginEngineVersion": "1.0.0"
   },
   "applicationInformation": {
     "version": "8.0.2"
   },
+  "schemaRegistryUrl": "https://psrc-4v1qj.eu-central-1.aws.confluent.cloud",
   "settings": {
     "centralPane": {
       "dbLevel": {
@@ -576,7 +649,7 @@
             "GUID": "6a474d94-c083-4c1a-811e-be8fa14a9f61",
             "x": 1534,
             "y": 1109,
-            "width": 228,
+            "width": 257,
             "height": 123,
             "color": {}
           },
@@ -584,7 +657,7 @@
             "GUID": "48e20d0f-104d-4ab3-a224-95150064e7dc",
             "x": 1544,
             "y": 1275,
-            "width": 222,
+            "width": 251,
             "height": 87,
             "color": {}
           }
@@ -625,9 +698,18 @@
             "autoWidth": true,
             "autoHeight": true,
             "GUID": "6a474d94-c083-4c1a-811e-be8fa14a9f61"
+          },
+          {
+            "autoWidth": true,
+            "autoHeight": true,
+            "GUID": "48e20d0f-104d-4ab3-a224-95150064e7dc"
           }
         ],
-        "relationshipUpdateDisabled": false
+        "relationshipUpdateDisabled": false,
+        "displayOptions": {
+          "dndHandles": false,
+          "hideRelationshipName": true
+        }
       },
       "collectionLevel": {},
       "changed": false
