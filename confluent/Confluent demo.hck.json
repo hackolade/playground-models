@@ -1,5 +1,5 @@
 {
-  "modelName": "New model",
+  "modelName": "Ordering System",
   "collections": [
     {
       "GUID": "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
@@ -117,9 +117,10 @@
                   ],
                   "isActivated": true,
                   "error": {
-                    "refDescription": false
+                    "nullable": false
                   },
-                  "refDescription": "This column represents the specific product being ordered. It could store a reference to the productID from the product table, or it could directly store the product name or SKU (Stock Keeping Unit), depending on the system’s design. The product column is used to identify which item is being purchased in each line of the order."
+                  "refDescription": "This column represents the specific product being ordered. It could store a reference to the productID from the product table, or it could directly store the product name or SKU (Stock Keeping Unit), depending on the system’s design. The product column is used to identify which item is being purchased in each line of the order.",
+                  "nullable": false
                 },
                 {
                   "name": "quantity",
@@ -618,10 +619,10 @@
   "schemaRegistryType": "Confluent Schema Registry",
   "hackoladeMeta": {
     "validationErrors": {
-      "schemaRegistryUrl": false
+      "modelName": false
     }
   },
-  "lastModifTS": "2025-02-25T16:05:01.693Z",
+  "lastModifTS": "2025-02-26T06:27:00.249Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {
