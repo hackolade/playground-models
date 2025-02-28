@@ -12,9 +12,13 @@ An online user documentation can be found [here](https://hackolade.com/help/Hubu
 Hackolade reserves the right to remove any inappropriate content from this repository, or any content that would negatively affect the platform.
 
 ## How to load your models to this repository
+This repository is configured with a "Fork & Pull" strategy, very common in open-source, and also in [inner-source](https://hackolade.com/help/Workingwithforks.html).  But instead of having a maintainer review your models, we enabled an automatic merge of your models, so you could automatically see your models in the Hub a few seconds after having submitted your Pull Request (see step 4 below.)
+
 Follow these steps in order to add models to this repository
 
 1. **Fork the repository**
+
+    This step cannot be done in Hackolade Studio.  It must be made in GitHub.
 
     Click on this <a icon="repo-forked" class="github-button" href="https://github.com/hackolade/playground-models/fork">fork button</a> to copy this repository in your own GitHub account. This will open a form like the following
 
@@ -22,19 +26,25 @@ Follow these steps in order to add models to this repository
 
     You don't have to change anything, just click `Create fork`
 
-1. Clone the new repository on your workstation by using your favorite Git tool or even better by using [Hackolade Studio](https://hackolade.com/help/Repository.html) to do so
+1. Clone the new repository on your workstation by using your favorite Git tool or even better by using [Hackolade Studio](https://hackolade.com/help/Clonearemoterepository.html) to do so
    > Since this a is a public repository, make sure to not add any confidential models
 
    > We advise each organization to create its own folder, separate from others
 
-1. When you are done, push the models on the forked repository
+1. When you are done, [commit and push the model(s)](https://hackolade.com/help/Commitlocalchanges.html) on the forked repository.
 
-1. On the Github page, click on `Contribute` and `Open pull request` like shown on the picure below
+1. In Hackolade Studio, [submit a Pull Request from the fork](https://hackolade.com/help/Workingwithforks.html#Submit%20a%20Pull%20Request%20from%20a%20fork).
 
-    <img src="./docs/images/contribute.png" />
+1. After a few seconds, your pull request should be merged into the main repository, be replicated with the Hub database, and be visible on https://hub.hackolade.com
 
-1. On the pull request page, give a title to your pull request and then click `Create pull request`
+As an alternative to step 4, you can manually do this on GitHub:
 
-    <img src="./docs/images/pull-request.png" />
+4 alt. On the GitHub page, click on `Contribute` and `Open pull request` like shown on the picture below
 
-1. After a few seconds, your pull request should be merged into the main repository and be visible on https://hub.hackolade.com
+<img src="./docs/images/contribute.png" />
+
+5 alt. On the pull request page, give a title to your pull request and then click `Create pull request`
+
+<img src="./docs/images/pull-request.png" />
+
+6 alt. After a few seconds, your pull request should be merged into the main repository, be replicated with the Hub database, and be visible on https://hub.hackolade.com
