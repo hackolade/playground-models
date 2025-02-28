@@ -89,8 +89,8 @@
           }
         },
         {
-          "code": "orderlines",
-          "name": "orderLines",
+          "code": "OrderLines",
+          "name": "order Lines",
           "isActivated": true,
           "required": true,
           "properties": [
@@ -123,9 +123,9 @@
                   }
                 },
                 {
-                  "code": "product",
+                  "code": "Product",
                   "GUID": "c4b72ef8-a56f-4aa2-baf4-3d54b74694ce",
-                  "name": "product",
+                  "name": "Product",
                   "type": "reference",
                   "$ref": "#/definitions/product",
                   "refType": "collectionReference",
@@ -134,7 +134,10 @@
                     "48e20d0f-104d-4ab3-a224-95150064e7dc"
                   ],
                   "isActivated": true,
-                  "error": {},
+                  "error": {
+                    "name": false,
+                    "code": false
+                  },
                   "refDescription": "This column represents the specific product being ordered. It could store a reference to the productID from the product table, or it could directly store the product name or SKU (Stock Keeping Unit), depending on the system’s design. The product column is used to identify which item is being purchased in each line of the order.",
                   "nullable": false,
                   "dependencies": [],
@@ -204,11 +207,14 @@
           "uniqueItems": false,
           "childType": "array",
           "type": "array",
-          "error": {},
           "GUID": "6830e97f-dca8-4600-a3e9-c525c2693c35",
           "metaProps": [],
           "hackoladeMeta": {
             "namingConvention": "code"
+          },
+          "error": {
+            "name": false,
+            "code": false
           }
         }
       ],
@@ -572,15 +578,15 @@
         "dataType": "",
         "shape": [
           {
-            "x": 1393,
+            "x": 1397,
             "y": 1193
           },
           {
-            "x": 1463.5,
+            "x": 1465.5,
             "y": 1193
           },
           {
-            "x": 1463.5,
+            "x": 1465.5,
             "y": 1170.5
           },
           {
@@ -634,15 +640,15 @@
         "dataType": "",
         "shape": [
           {
-            "x": 1393,
+            "x": 1397,
             "y": 1306
           },
           {
-            "x": 1468.5,
+            "x": 1470.5,
             "y": 1306
           },
           {
-            "x": 1468.5,
+            "x": 1470.5,
             "y": 1318.5
           },
           {
@@ -664,7 +670,7 @@
     "e2eb848c-cda5-47aa-8d53-e210eef7afbe": "order",
     "f0a8dffb-4801-48e6-b38a-09429dcb411d": "Order ID",
     "a32d7f72-588e-43dc-a034-8a85a6b0cbd2": "Order Date",
-    "6830e97f-dca8-4600-a3e9-c525c2693c35": "orderLines",
+    "6830e97f-dca8-4600-a3e9-c525c2693c35": "order Lines",
     "6a474d94-c083-4c1a-811e-be8fa14a9f61": "customer",
     "bb3df3b1-f9fa-4aab-8b1a-f7ed43bf5e4e": "Customer ID",
     "85656d1d-be08-435a-8d4c-77b421d52e29": "First Name",
@@ -681,7 +687,7 @@
     "14ca098f-1a6e-44ab-81e0-9d9bd27dae4c": "Identifier",
     "1d650548-d6bc-44b9-a9cf-b670e776c362": "Unit Price",
     "81f414a6-6ba3-431d-a926-f8e233d08297": "Quantity",
-    "c4b72ef8-a56f-4aa2-baf4-3d54b74694ce": "product",
+    "c4b72ef8-a56f-4aa2-baf4-3d54b74694ce": "Product",
     "283c0014-b32c-44ee-bb8e-9f58da1827f1": "Line Num",
     "71d70559-ef92-44c0-ac9e-7fbc6324286f": "Order Line"
   },
@@ -749,7 +755,7 @@
     },
     "namingConvention": "code"
   },
-  "lastModifTS": "2025-02-28T11:01:35.965Z",
+  "lastModifTS": "2025-02-28T13:10:02.910Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {
@@ -770,7 +776,7 @@
             "GUID": "e2eb848c-cda5-47aa-8d53-e210eef7afbe",
             "x": 1080,
             "y": 1080,
-            "width": 313,
+            "width": 317,
             "height": 339,
             "color": {}
           },
